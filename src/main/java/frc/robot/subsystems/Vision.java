@@ -1,5 +1,5 @@
 package frc.robot.subsystems;
 
-public class Vision {
-    // To be filled in soon.
+public class Vision<T> {
+    T camera;
 }

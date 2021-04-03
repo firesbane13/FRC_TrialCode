@@ -6,6 +6,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 
+import frc.robot.lib.Limelight;
+import frc.robot.subsystems.Vision;
+
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
  * each mode, as described in the TimedRobot documentation. If you change the name of this class or
@@ -13,6 +16,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
  * project.
  */
 public class Robot extends TimedRobot {
+  Vision<Limelight> camera;
 
   /**
    * This function is run when the robot is first started up and should be used for any

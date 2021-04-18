@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Joystick;
  * Used to access Joystick buttons easier
  */
 public class LogitechExtreme3D extends Joystick {
+    private Logging logging = new Logging(Logging.ENABLE_SMARTDASHBOARD);
 
     /**
      * Used to initiate the Logitech Extreme 3D
@@ -29,7 +30,11 @@ public class LogitechExtreme3D extends Joystick {
      * @return
      */
     public int getHat() {
-        return getPOV();
+        int angle = getPOV();
+
+        logging.write("Joystick Hat Angle:", angle);
+
+        return angle;
     }
 
     /**
@@ -40,7 +45,12 @@ public class LogitechExtreme3D extends Joystick {
      * @return buttonPressed
      */
     public boolean pressed(int buttonNumber) {
-        return getButtonPressed(buttonNumber);
+        boolean buttonPressed = getButtonPressed(buttonNumber);
+
+        logging.write("Joystick Button:", buttonNumber);
+        logging.write("Joystick Pressed:", buttonPressed);
+
+        return buttonPressed;
     }
 
     /**
@@ -51,7 +61,12 @@ public class LogitechExtreme3D extends Joystick {
      * @return buttonReleased
      */
     public boolean released(int buttonNumber) {
-        return getButtonReleased(buttonNumber);
+        boolean buttonReleased = getButtonReleased(buttonNumber);
+
+        logging.write("Joystick Button:", buttonNumber);
+        logging.write("Joystick Pressed:", buttonReleased);
+
+        return buttonReleased;
     }
 
     /**

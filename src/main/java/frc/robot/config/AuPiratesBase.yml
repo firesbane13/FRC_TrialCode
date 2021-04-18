@@ -1,0 +1,62 @@
+$extends: false
+teamNumber: 3291
+teamName: "Au Pirates"
+robotName: "Pirate Ship Revenge"
+subsystems:
+  camera:
+    implemented: false
+  climber:
+    implemented: false
+  collector:
+    implemented: false
+  drivetrain:
+    implemented: true
+    encoders:
+        encoder01:
+          implemented: true
+          port: 0
+          ppr: 200
+        encoder02:
+          implemented: true
+          port: 1
+          ppr: 100
+        encoder03: 
+          implemented: false
+          type: "absolute"
+    motorControllers:
+      talonSRX:
+        type: brushless
+        leftSide: 
+          leftSiblingOne: 
+            implemented: true
+            port: 0
+            position: front
+          leftSiblingTwo: 
+            implemented: false
+            port: -1
+            position: middle
+          leftSiblingThree:
+            implemented: true
+            port: 1
+            position: rear
+        rightSide:
+          rightSiblingOne:
+            implemented: true
+            port: 2
+            position: front
+          rightSiblingTwp:
+            implemented: false
+            port: -1
+            position: middle
+          rightSiblingThree:
+            implemented: true
+            port: 3
+            position: rear
+    invertMotors:
+      - "leftSide"
+  hopper:
+    implemented: false
+  shooter:
+    implemented: false
+  turret:
+    implemented: false

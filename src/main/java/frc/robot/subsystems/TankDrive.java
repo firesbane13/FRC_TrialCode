@@ -83,7 +83,7 @@ public class TankDrive {
     private final DifferentialDrivetrainSim drivetrainSim = new DifferentialDrivetrainSim(
         drivetrainSystem, 
         DCMotor.getCIM(2), 
-        8, 
+        4.67, 
         Constants.TRACKWIDTH, 
         Constants.WHEELRADIUS, 
         null

@@ -21,6 +21,22 @@ public final class Constants {
      public static final double DRIVEI = 0;
      public static final double DRIVED = 0;
 
+     /** 
+      * Wheel radius in meters.  Seems odd, but it seems like FRC code
+      * wants things in meters.
+      * 
+      * 3 inches = 0.0762 meters
+      */
+     public static final double WHEELRADIUS = 0.0762;
+
+    /************************************************
+     * MOTOR INFORMATION
+     */
+    public static final double CIM_RPMS_AT_TORQUE = 4320.0;
+    public static final double CIM_AMPS_AT_TORQUE = 26.500;
+    public static final double CIM_WATTS_AT_TORQUE = 204.145;
+    public static final double CIM_VOLTS_AT_TORQUE = CIM_WATTS_AT_TORQUE / CIM_AMPS_AT_TORQUE;
+
     /**
      * Identify a standard differential drive drivetrain, given the drivetrain's kV and kA in both linear (volts/(meter/sec) and volts/(meter/sec^2)) and angular (volts/(radian/sec) and volts/(radian/sec^2)) cases. This can be found using frc-characterization. The states of the system are [left velocity, right velocity]^T, inputs are [left voltage, right voltage]^T, and outputs are [left velocity, right velocity]^T.
      * Parameters:
@@ -43,14 +59,6 @@ public final class Constants {
     // Ports that encoders are plugged into
     protected static final int[] LEFTMOTORENCODER = {0, 1};
     protected static final int[] RIGHTMOTORENCODER = {2, 3};
-
-    /** 
-     * Wheel radius in meters.  Seems odd, but it seems like FRC code
-     * wants things in meters.
-     * 
-     * 3 inches = 0.0762 meters
-     */
-    public static final double WHEELRADIUS = 0.0762;
 
     /**
      * Track width is the measurement from the left center wheel to the 

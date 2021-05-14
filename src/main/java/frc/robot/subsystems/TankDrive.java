@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.system.plant.LinearSystemId;
 import edu.wpi.first.wpiutil.math.numbers.N2;
 import frc.robot.Constants;
+import frc.robot.lib.Physics;
 
 public class TankDrive { 
     // Drive Train
@@ -73,10 +74,20 @@ public class TankDrive {
         Constants.DRIVED
     );
 
+    double angularVelocity = Physics.angularVelocity(Constants.CIM_RPMS_AT_TORQUE);
+    double linearVelocity = Physics.linearVelocity(angularVelocity, Constants.WHEELRADIUS);
+    double angularAcceleration = Physics.angularAcceleration(0, angularVelocity, 1.0);
+    double linearAcceleration = Physics.linearAcceleration(angularAcceleration, Constants.WHEELRADIUS);
+
+    double kaLinear = Constants.CIM_VOLTS_AT_TORQUE / angularVelocity;
+    double kvLinear = Constants.CIM_VOLTS_AT_TORQUE / linearVelocity;
+    double kaAngular = Constants.CIM_VOLTS_AT_TORQUE / angularAcceleration;
+    double kvAngular = Constants.CIM_VOLTS_AT_TORQUE / linearAcceleration;
+
     private final LinearSystem<N2, N2, N2> drivetrainSystem = 
         LinearSystemId.identifyDrivetrainSystem(
             Constants.KVLINEAR, 
-            Constants.KALINEAR, 
+            Constants.KAANGULAR, 
             Constants.KVANGULAR, 
             Constants.KAANGULAR    
         );
@@ -108,6 +119,11 @@ public class TankDrive {
         rightEncoder.reset();
 
         SmartDashboard.putData("Game Field", gameField);
+
+        SmartDashboard.putNumber("kaLinear: ", kaLinear);
+        SmartDashboard.putNumber("kvLinear: ", kvLinear);
+        SmartDashboard.putNumber("kaAngular: ", kaAngular);
+        SmartDashboard.putNumber("kvAngular: ", kvAngular);
     }
 
     public void drive(double leftSpeed, double rightSpeed) {

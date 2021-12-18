@@ -19,7 +19,7 @@ public class YamlConfig {
     private Map<String, SubsystemsConfig> subsystems;
 
     public static YamlConfig loadFrom(InputStream inputStream) {
-        Representer representer = new Representer();
+        var representer = new Representer();
 
         representer.getPropertyUtils().setSkipMissingProperties(true);
 
